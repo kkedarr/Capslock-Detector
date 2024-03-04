@@ -1,0 +1,44 @@
+initial html code:
+/////////////////////////////
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detect Capslock</title>
+</head>
+<body>
+    <label class="label-button" >Email</label>
+    <input id="input" type="text" name="email">
+
+    <p id="errormessage" onclick="handleCapslock()" style="visibility: hidden;">
+        Oops, your email cannot contain any Uppercase!
+    </p>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
+
+////////////////////////////
+
+Initial JavaScript code
+////////////////////////////
+function handleCapslock() {
+    const input = document.getElementById("input");
+    const errMsg = document.getElementById("errormessage");
+
+    input.addEventListener("keydown", function(event) {
+        if (event.getModifierState("Capslock")) {
+            errMsg.style.display = "block";
+            errMsg.style.color = "red"; 
+        } else {
+            errMsg.style.display = "none";
+            errMsg.style.color = "white";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    handleCapslock();
+});
+//////////////////////////////
